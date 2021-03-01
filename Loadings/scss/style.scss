@@ -1,0 +1,86 @@
+/*
+ * @file
+ * Style for loading components.
+ */
+
+@import './mixins';
+
+// Variables -- Colors
+$green-light: #f5ffdf;
+$purple-light: #d5a2ff;
+
+// Style ------------------------------------------
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: $green-light;
+}
+
+.page {
+  @include flex;
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+  padding: 1rem;
+}
+
+.load-wrapper {
+  width: 18%;
+  min-height: 4rem;
+  margin: 1rem 1%;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 1rem rgba(#fff, .7);
+}
+
+.load-line-point {
+  .loadbox {
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+  }
+  .loader {
+    &, &:before, &:after {
+      border-radius: 50%;
+      @include animation-fill-mode(both);
+      @include animation(loaderLine 1.8s infinite ease-in-out);
+    }
+
+    & {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      vertical-align: middle;
+      color: $purple-light;
+      @include animation-delay(-.16s);
+      position: relative;
+      top: -2rem;
+    }
+    &:before,
+    &:after {
+      content: '';
+      display: inline-block;
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      top: 0;
+    }
+    &:before {
+      right: 120%;
+      @include animation-delay(-.32s);
+    }
+    &:after {
+      left: 120%;
+    }
+  }
+}
+@include keyframes(loaderLine) {
+  0%, 80%, 100% {
+    box-shadow: 0 2rem 0 -1rem;
+  }
+  40% {
+    box-shadow: 0 2rem 0 -.2rem;
+  }
+}
