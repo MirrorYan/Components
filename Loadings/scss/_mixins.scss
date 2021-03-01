@@ -1,0 +1,59 @@
+/*
+ * @file
+ * Mixins for style.
+ */
+
+// Flex layout.
+@mixin flex {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+@mixin flex-wrap($value) {
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  -ms-flex-wrap: $value;
+  flex-wrap: $value;
+}
+@mixin justify-content($value) {
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  justify-content: $value;
+}
+@mixin align-items($value) {
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  -ms-align-items: $value;
+  align-items: $value;
+}
+
+
+// Animates
+@mixin animation($value) {
+  -webkit-animation: $value;
+  -moz-animation: $value;
+  animation: $value;
+}
+@mixin animation-delay($value) {
+  -webkit-animation-delay: $value;
+  -moz-animation-delay: $value;
+  animation-delay: $value;
+}
+@mixin animation-fill-mode($value) {
+  -webkit-animation-fill-mode: $value;
+  -moz-animation-fill-mode: $value;
+  animation-fill-mode: $value;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
